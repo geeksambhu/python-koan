@@ -13,20 +13,20 @@ class AboutIteration(Koan):
         for num in it:
             total += num
 
-        self.assertEqual(__ , total)
+        self.assertEqual(sum( i for i in range(1,6)) , total)
 
     def test_iterating_with_next(self):
         stages = iter(['alpha','beta','gamma'])
 
         try:
-            self.assertEqual(__, next(stages))
+            self.assertEqual('alpha', next(stages))
             next(stages)
-            self.assertEqual(__, next(stages))
+            self.assertEqual('gamma', next(stages))
             next(stages)
         except StopIteration as ex:
             err_msg = 'Ran out of iterations'
 
-        self.assertRegex(err_msg, __)
+        self.assertRegex(err_msg, 'Ran out of iterations')
 
     # ------------------------------------------------------------------
 
@@ -40,14 +40,14 @@ class AboutIteration(Koan):
         mapping = map(self.add_ten, seq)
 
         self.assertNotEqual(list, mapping.__class__)
-        self.assertEqual(__, mapping.__class__)
+        self.assertEqual(map, mapping.__class__)
         # In Python 3 built in iterator funcs return iterable view objects
         # instead of lists
 
         for item in mapping:
             mapped_seq.append(item)
 
-        self.assertEqual(__, mapped_seq)
+        self.assertEqual([11,12,13], mapped_seq)
 
         # Note, iterator methods actually return objects of iter type in
         # python 3. In python 2 map() would give you a list.
@@ -62,7 +62,7 @@ class AboutIteration(Koan):
         for item in filter(is_even, seq):
             even_numbers.append(item)
 
-        self.assertEqual(__, even_numbers)
+        self.assertEqual([2,4,6], even_numbers)
 
     def test_just_return_first_item_found(self):
         def is_big_name(item):
@@ -77,7 +77,7 @@ class AboutIteration(Koan):
         except StopIteration:
             msg = 'Ran out of big names'
 
-        self.assertEqual(__, name)
+        self.assertEqual('Clarence', name)
 
 
     # ------------------------------------------------------------------
@@ -94,16 +94,19 @@ class AboutIteration(Koan):
         # to the functools module.
 
         result = functools.reduce(self.add, [2, 3, 4])
-        self.assertEqual(__, result.__class__)
+        self.assertEqual(int, result.__class__)
         # Reduce() syntax is same as Python 2
 
-        self.assertEqual(__, result)
+        self.assertEqual(9, result)
 
         result2 = functools.reduce(self.multiply, [2, 3, 4], 1)
         self.assertEqual(__, result2)
 
         # Extra Credit:
         # Describe in your own words what reduce does.
+        '''reduce(function, iterable[, initializer])
+
+        '''
 
     # ------------------------------------------------------------------
 
