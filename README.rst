@@ -192,7 +192,7 @@ and frameworks. Most of them can be found in github. Also there is a little
 koans activity on bitbucket.
 
 * Github koan projects:
-    https://github.com/search?q=koans&ref=cmdform
+   https://github.com/search?q=koans&ref=cmdform
 
 * Bitbucket koan projects:
     https://bitbucket.org/repo/all?name=koans

@@ -34,7 +34,65 @@ from runner.koan import *
 
 def score(dice):
     # You need to write this method
-    pass
+    scores = 0
+    one_count = 0
+    two_count = 0
+    three_count = 0
+    four_count = 0
+    five_count = 0
+    six_count = 0 
+    if not dice:
+        return 0
+    dice = sorted(dice)
+    if dice:
+        for elem in dice:
+            if elem == 1:
+                one_count += 1
+                
+            elif elem == 5:
+                five_count += 1
+                
+            elif elem == 2:
+                scores += 0
+                two_count += 1
+            elif elem == 3:
+                scores += 0
+                three_count += 1
+            elif elem == 4:
+                scores += 0
+                four_count += 1
+            elif elem == 6:
+                scores += 0
+                six_count += 1  
+        if one_count > 0:
+            while one_count > 0:
+                if one_count >= 3:
+                    one_count -= 3
+                    scores = scores + 1000
+                elif one_count > 0 and one_count < 3:
+                    scores = scores + 100
+                    one_count -= 1
+
+        if two_count == 3:
+            scores += 200
+        if three_count == 3:
+            scores += 300
+        if four_count ==  3:
+            scores += 400
+        if five_count > 0:
+            while five_count > 0:
+                if five_count >= 3:
+                    five_count -= 3
+                    scores += 500
+                elif five_count > 0 and five_count < 3:
+                    scores = scores + 50
+                    five_count  -= 1
+
+        elif six_count == 3:
+            scores += 600
+
+    return scores 
+
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
